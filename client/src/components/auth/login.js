@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import {login} from "../utils/auth";
-import Header from "./header";
+import {login} from "../../utils/auth";
+import Header from "../header";
+
+//Style
+import "../../styles/login.css"
 
 class Login extends Component {
     constructor(props){
@@ -9,6 +12,9 @@ class Login extends Component {
             username: "",
             password: ""
         }
+        this.changeHandler = this.changeHandler.bind(this);
+        this.submitHandler = this.submitHandler.bind(this);
+
     }
 
     changeHandler = (e) => {
@@ -21,7 +27,7 @@ class Login extends Component {
         e.preventDefault();
         login(this.state)
             .then(()=> {
-                this.props.history.push("/");
+                this.props.history.push("/profile");
             })
             .catch((err) =>{
                 console.log(err);
@@ -32,6 +38,8 @@ class Login extends Component {
         return(
             <div>
             <Header/>
+
+            <h2>Log in</h2>
             <form class="form-inline" onSubmit={this.submitHandler} id="new-form">
                 <div>
                 <label for="name">Username</label>

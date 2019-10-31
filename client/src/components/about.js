@@ -1,6 +1,9 @@
 import React from "react";	
 import Header from "./header"
 
+//Style
+import "../styles/about.css"
+
 class About extends React.Component{
     render(){
         return (

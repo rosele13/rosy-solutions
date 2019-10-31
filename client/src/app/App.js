@@ -2,17 +2,18 @@ import React from 'react';
 import { BrowserRouter as Router ,Switch, Route } from "react-router-dom";
 
 //Style sheets
-import './stylesheets/App.css';
+import '../styles/App.css';
 
 //Components
-import Home from "./components/home";
-import Random from "./components/random";
-import Signup from "./components/signup";
-import About from "./components/about";
-import Login from "./components/login";
-// import Cocktail from './components/cocktail';
-// import Liquor from "./components/liquor";
-// import User from "./components/user";
+import Home from "../components/home";
+import Random from "../components/random";
+import Signup from "../components/auth/signup";
+import About from "../components/about";
+import Login from "../components/auth/login";
+import Cocktail from '../components/cocktail';
+import Search from "../components/search"
+import Liquor from "../components/liquor";
+import User from "../components/user";
 
 class App extends React.Component {	
 
@@ -26,9 +27,10 @@ class App extends React.Component {
         <Route path="/login" component={Login} exact></Route>
         <Route path="/about" component={About} exact></Route>
         <Route path="/random" component={Random} exact></Route>
-        {/* {/* <Route path="/cocktail" component={Cocktail} exact ></Route> */}
-        {/* <Route path="/liquor" component={Liquor} exact></Route> */}
-        {/* <Route path="/profile" component={User} exact></Route> */}
+        <Route path="/cocktail/:id" component={Cocktail} exact ></Route>
+        <Route path="/search" component={Search} exact ></Route>
+        <Route path="/liquor/:id" component={Liquor} exact></Route>
+        <Route path="/profile" component={User} exact></Route>
         </Switch>
       </div>
       </Router>

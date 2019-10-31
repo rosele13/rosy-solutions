@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {signup} from "../utils/auth";
-import Header from "./header";
+import {signup, setUser} from "../../utils/auth";
+import Header from "../header";
+
+//Style
+import "../../styles/signup.css"
 
 class Signup extends React.Component {
 
@@ -14,6 +17,8 @@ class Signup extends React.Component {
             email: "",
             password: ""
         }
+        this.changeHandler = this.changeHandler.bind(this);
+        this.submitHandler = this.submitHandler.bind(this);
     }
 
     changeHandler = (e) => {
@@ -24,12 +29,15 @@ class Signup extends React.Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-        signup(this.state);
-        this.props.history.push("/auth/login");
+        signup(this.state)
+        .then((response)=> {
+            setUser(response.data);
+            this.props.history.push('/profile');
+        })
+        .catch((err) => console.log(err))
     }
 
     render(){
-        debugger
         return(
             <div>
             <Header />
@@ -58,7 +66,7 @@ class Signup extends React.Component {
                 <button type="submit" className="btn btn-primary">Signup</button>
                 </div>
             </form>
-            <span>Already have an account?</span><Link to="/auth/login" className="btn btn-primary ml-2">Login</Link>
+            <span>Already have an account?</span><Link to="/login" className="btn btn-primary ml-2">Login</Link>
             </div>
         )
     }

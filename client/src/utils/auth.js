@@ -1,22 +1,20 @@
 import Axios from "axios";
 import qs from "querystring";
+const bcrypt     = require('bcryptjs');
 
 const axios = Axios.create({
     withCredentials: true,
     baseURL: process.env.REACT_APP_API
 });
 
-export const signup = function({username, password, firstname, lastname, email}, navigate) {
+export const signup = function({username, password, firstname, lastname, email}) {
     return axios({
         method: "POST",
         url: "/auth/signup",
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
-        data: qs.stringify({username, firstname, lastname, password, email}),
+        data: qs.stringify({username, firstname, lastname, password, email})
     })
-    .then((response)=> {
-        setUser(response.data);
-        navigate.push('/');
-    })
+    
     .catch((err)=>{
         console.log(err);
     })
@@ -27,15 +25,19 @@ export const setUser = function(user){
 }
 
 export const login = function({username, password}, navigate) {
+    
+    // const salt     = bcrypt.genSaltSync(10);
+    // const password = bcrypt.hashSync(pass, salt);
+    debugger
     return axios({
         method: "POST",
         url: "/auth/login",
-        headers: { 'content-type': 'application/x-www-form-urlencoded' },
+        headers: { 'content-type': 'application/x-www-form-urlencoded', 'Access-Control-Allow-Origin': '*' },
         data: qs.stringify({username, password}),
     })
     .then((response)=> {
         setUser(response.data);
-        navigate.push('/');
+        navigate.push('/profile');
     })
     .catch((err)=>{
         console.log(err);
@@ -55,7 +57,7 @@ export const logout = function(){
     return axios({
          url: "/auth/logout"
      })
-     .then((res)=> {
+     .then((res, navigate)=> {
          localStorage.removeItem('user');
          navigate.push('/')
      })

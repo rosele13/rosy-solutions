@@ -1,0 +1,9 @@
+.App {
+  text-align: center;
+  height: 100vh;
+  background-color: #cccccc;
+  background-image: linear-gradient(black, rgb(255, 0, 255), blue);
+  background-size: cover;
+  color: white;
+  font-family: cursive;
+}
