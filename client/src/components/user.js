@@ -54,23 +54,22 @@ class User extends React.Component{
             <div>
                 <Header/>
                 <div>
-
                     <h1>Welcome {this.state.user.firstname}!</h1>
                 </div>
                 <div>
                     <h2>Favorite Solutions</h2>
                     <Link to="/search"><button>Add more solutions!</button></Link>
+                    <div className="grid-container">
                     {
                         this.state.favDrinks.map((drinks)=> (
                             <div>
                             <Result dataSearch= {drinks} isSolution={true}/>
-                            {/* <button onClick={this.deleteDrink(drinks)}>Delete</button> */}
                             </div>
-
                             
-
+                            
                         ))
                     }
+                    </div>
                 </div>
             </div>
         );

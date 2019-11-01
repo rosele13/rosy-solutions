@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap');
 .App {
   text-align: center;
-  height: 100vh;
-  background-color: #cccccc;
-  background-image: linear-gradient(black, rgb(255, 0, 255), blue);
-  background-size: cover;
-  color: white;
-  font-family: cursive;
+  font-family: 'Monserrat';
+  color: black;
+
+font-style: normal;
+font-weight: normal;
+padding-top: 90px;
+margin:10px;
+
+}
+button{
+  border-radius: 5px;
+  background-color: lightpink;
 }

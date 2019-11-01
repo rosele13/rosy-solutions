@@ -1,0 +1,9 @@
+.grid-container {
+    column-count: 3;
+    width: 100%;
+
+}
+
+.grid-container img {
+    width: 100%;
+}
